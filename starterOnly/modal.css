@@ -3,6 +3,7 @@
   --font-slab: var(--font-default);
   --modal-duration: 0.8s;
 }
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -28,6 +29,7 @@ p {
 
 img {
   padding-right: 1rem;
+  object-fit: cover; /*ajout*/
 }
 
 .topnav {
@@ -68,16 +70,17 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
-  .topnav a {display: none;}
+@media screen and (max-width: 768px) { /* supression d'un breakpoint à 768px en doublon */
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
   }
-}
-
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -88,12 +91,14 @@ img {
     display: block;
     text-align: left;
   }
+
+  
 }
 
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
+@media screen and (max-width: 540px) {
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
@@ -111,8 +116,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -441,7 +444,7 @@ input[data-error]::after {
   white-space: nowrap;
 }
 .hero-text {
-  width: 146%;
+  width: 100%; /* 146% avant modif */
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
@@ -478,6 +481,12 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
+@media screen and (max-width: 970px) { /*Ajout*/
+  .hero-headline {
+    font-size: 3.2em;
+  }
+}
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
@@ -487,6 +496,7 @@ footer {
     background: #fff;
     color: #000;
     padding: 20px;
+    min-width: auto; /*ajout min-width*/
   }
   .hero-content::after {
     content: unset;
