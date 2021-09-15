@@ -537,3 +537,25 @@ footer {
   }
 }
 
+.error {
+  display: none;
+  color: red;
+  font-size: 0.7em;
+}
+
+#validation {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  left: 0;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 2em;
+  background-color: #279e7a;
+  color: white;
+  z-index: 1;
+    
+}
