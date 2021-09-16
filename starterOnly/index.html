@@ -69,9 +69,10 @@
                   type="text"  
                   id="first"
                   name="first"
-                  minlength="2"
+                  
                 />
-                <span class="error">Erreur</span><br>
+                <span class="error">Entrez votre prénom</span><br>
+                <span class="errorLength">Le nombre de caractères doit être compris entre 2 et 20</span>
               </div>
               <div
                 class="formData">
@@ -81,9 +82,9 @@
                   type="text"
                   id="last"
                   name="last"
-                  minlength="2"
                 />
-                <span class="error">Erreur</span><br> <!--Ajout minlength-->
+                <span class="error">Entrez votre nom</span><br>
+                <span class="errorLength">Le nombre de caractères doit être compris entre 2 et 20</span>
               </div>
               <div
                 class="formData">
@@ -94,7 +95,7 @@
                   id="email"
                   name="email"
                 />
-                <span class="error">Erreur</span><br>
+                <span class="error">Entrez un e-mail valide</span><br>
               </div>
               <div
                 class="formData">
@@ -105,7 +106,8 @@
                   id="birthdate"
                   name="birthdate"
                 />
-                <span class="error">Erreur</span><br>
+                <br>
+                <span class="error">Entrez une date de naissance valide</span>
               </div>
               <div
                 class="formData">
@@ -117,7 +119,7 @@
                   name="quantity" 
                   min="0" 
                   max="99">
-                  <span class="error">Erreur</span>
+                  <span class="error">Entrez un nombre</span>
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div
@@ -189,7 +191,7 @@
                   Portland
                 </label>
                 <br>
-                <span class="error">Erreur</span>
+                <span class="error">Choisissez une ville</span>
               </div>
 
               <div
@@ -219,6 +221,16 @@
                 value="C'est parti"
               />
             </form>
+            
+            <div id="validation-container">
+              <span id="valid-message">Merci ! Votre réservation a bien été prise en compte.</span>
+              <input
+                class="btn-submit" id="close-btn"
+                type="submit"
+                class="button"
+                value="Fermer"
+              />
+            </div>
           </div>
         </div>
       </div>

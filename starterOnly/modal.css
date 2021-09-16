@@ -537,7 +537,7 @@ footer {
   }
 }
 
-.error {
+.error, .errorLength {
   display: none;
   color: red;
   font-size: 0.7em;
@@ -548,7 +548,7 @@ footer {
   top: 50%;
   right: 0;
   left: 0;
-  height: 80px;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -557,5 +557,29 @@ footer {
   background-color: #279e7a;
   color: white;
   z-index: 1;
-    
+  display: none;
+  animation: valid-message 3s;
+}
+
+.input {
+  border: 2.5px solid red;
+}
+
+#validation-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#close-btn {
+  display: none;
+}
+
+#valid-message {
+  color: white;
+  font-size: 1.8em;
+  display: none;
+  text-align: center;
+  margin: 15px;
+  margin-bottom: 50px;
 }
