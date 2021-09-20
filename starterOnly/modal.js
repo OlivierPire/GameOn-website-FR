@@ -13,41 +13,36 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const close = document.querySelector(".close");
 const form = document.querySelector("form");
-const locationBtn = document.querySelectorAll(".location-btn"); // Buttons radio pour l'input "Quelles villes"
+const locationBtn = document.querySelectorAll(".location-btn"); // Button radio pour l'input "Quelles villes"
 const validMessage = document.getElementById("valid-message"); // Message de validation du formulaire
-const errorLength = document.querySelectorAll(".errorLength"); // Message d'erreur pour nom et prénom si le nombre de caractères n'est pas respecté
 const closeBtn = document.getElementById("close-btn"); // Button fermer, apparaît une fois le formulaire envoyé
 
-//Fonction messages d'erreur
-const errorMessage = (i, style) => {
-  const error = document.querySelectorAll(".error");
-  error[i].style.display = style;
+//Fonction messages d'erreur 
+// Le paramètre selector permet de déclarer une constante error correspondant au bon id, style permet d'ajouter le style correspondant "none" "inline-block" 
+const errorMessage = (selector, style) => {
+  const error = document.getElementById(selector);
+  error.style.display = style;
 } 
 
 // Listen to click event
-close.addEventListener('click', closeModal); 
-function closeModal() {
+close.addEventListener('click', closeModal); // Au clic la function close Modal est lancé
+function closeModal() { // Permet de fermer la modal en ajoutant le style "none" à modalbg
   modalbg.style.display = 'none';
 };
 
 closeBtn.addEventListener("click", closeByBtn); // Button fermer, apparaît une fois le formulaire envoyé
-function closeByBtn() {
+function closeByBtn() { // Ferme la modal en cliquant sur le button "fermer"
   closeModal();
 };
 
 // Function Control
 const firstControl = () => {
   if(first.value === ""){ // si la value de "first" est vide
-    first.classList.add("input"); // ajoute le style de la classe "input" à "first" (border de input = rouge)
-    errorMessage("0", "inline-block"); // fait appraitre le message d'erreur, "0" correspond à l'objet "first" du tableau "error"
-  } else if (first.value.length < 2 || first.value.length > 20) { // si la value de first est <2 ou >20
-    first.classList.add("input");
-    errorLength[0].style.display = "inline-block";
-    errorMessage("0", "none");
-  } else {
+    first.classList.add("input"); // ajoute le style de la classe "input" à "first" (border de input = rouge (voir css))
+    errorMessage("firstError", "inline-block"); // fait appraitre le message d'erreur avec la function errorMessage
+  } else { // sinon retire 'input' et fait disparaitre le message d'erreur + return true
     first.classList.remove("input");
-    errorMessage("0", "none");
-    errorLength[0].style.display = "none";
+    errorMessage("firstError", "none");
     return true;
   }
 };
@@ -55,15 +50,10 @@ const firstControl = () => {
 const lastControl = () => {
   if(last.value === "") { 
     last.classList.add("input");
-    errorMessage("1", "inline-block");
-  } else if (last.value.length < 2 || last.value.length > 20) {
-    last.classList.add("input");
-    errorLength[1].style.display = "inline-block";
-    errorMessage("1", "none");
+    errorMessage("lastError", "inline-block");
   } else {
     last.classList.remove("input");
-    errorMessage("1", "none");
-    errorLength[1].style.display = "none";
+    errorMessage("lastError", "none");
     return true;
   }
 };
@@ -71,10 +61,10 @@ const lastControl = () => {
 const emailControl = () => {
   if(email.value === "") {
     email.classList.add("input");
-    errorMessage("2", "inline-block");
+    errorMessage("emailError", "inline-block");
   } else {
     email.classList.remove("input");
-    errorMessage("2", "none");
+    errorMessage("emailError", "none");
     return true;
   }
 };
@@ -82,10 +72,10 @@ const emailControl = () => {
 const birthdateControl = () => {
   if(birthdate.value === "") {
     birthdate.classList.add("input");
-    errorMessage("3", "inline-block");
+    errorMessage("birthdateError", "inline-block");
   } else {
     birthdate.classList.remove("input");
-    errorMessage("3", "none");
+    errorMessage("birthdateError", "none");
     return true;
   }
 };
@@ -93,10 +83,10 @@ const birthdateControl = () => {
 const quantityControl = () => {
   if(quantity.value === "") {
     quantity.classList.add("input");
-    errorMessage("4", "inline-block");
+    errorMessage("quantityError", "inline-block");
   } else {
     quantity.classList.remove("input");
-    errorMessage("4", "none");
+    errorMessage("quantityError", "none");
     return true;
   }
 };
@@ -104,28 +94,28 @@ const quantityControl = () => {
 const locationControl = () => {
   for(i=0; i<locationBtn.length; i++) // Boucle qui incrémente i à chaque fois jusqu'à ce que i soit égal à "length", i correspond à chaque ville
     if(locationBtn[i].checked) { // si une ville est "checked"
-      errorMessage("5", "none");
+      errorMessage("locationError", "none");
       return true;
     } else {
-      errorMessage("5", "inline-block");
+      errorMessage("locationError", "inline-block");
     };
 };
 
 const checkboxControl = () => {
   if(checkbox1.checked) {
-    errorMessage("6", "none");
+    errorMessage("checkboxError", "none");
     return true;
   } else {
-    errorMessage("6", "inline-block");
+    errorMessage("checkboxError", "inline-block");
   }
 };
 
 //Validate form
-
+// La soumission du formulaire lance la function validateForm
 form.addEventListener('submit', validateForm);
 function validateForm(e) {
-  e.preventDefault();
-  firstControl();
+  e.preventDefault(); // Retire le comportement par défaut, la page ne s'actualise pas
+  firstControl(); // Toutes les functions précédentes sont jouées 
   lastControl();
   emailControl();
   birthdateControl();
@@ -133,10 +123,10 @@ function validateForm(e) {
   locationControl();
   checkboxControl();
   if(firstControl() && lastControl() && emailControl() && birthdateControl() && 
-  quantityControl() && locationControl() && checkboxControl() === true) { // si toutes les functions retournent true 
-    form.style.display = "none";
-    closeBtn.style.display = "inline-block";
-    validMessage.style.display = "inline-block";
+  quantityControl() && locationControl() && checkboxControl()) { // si toutes les functions retournent true 
+    form.style.display = "none"; // Le form disparaît 
+    closeBtn.style.display = "inline-block"; // Le button fermer apparaît
+    validMessage.style.display = "inline-block"; // Le message de validation apparaît
   };
 };
 

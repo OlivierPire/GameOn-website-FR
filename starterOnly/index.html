@@ -28,7 +28,7 @@
         </a>
       </nav>
     </div>
-    <!-- suppression </div> -->
+    <!-- suppression </div> de trop-->
     <main>
       <div class="hero-section">
         <div class="hero-content">
@@ -69,10 +69,9 @@
                   type="text"  
                   id="first"
                   name="first"
-                  
+                  minlength="2"
                 />
-                <span class="error">Entrez votre prénom</span><br>
-                <span class="errorLength">Le nombre de caractères doit être compris entre 2 et 20</span>
+                <span class= "message" id="firstError">Entrez votre prénom</span><br>
               </div>
               <div
                 class="formData">
@@ -82,9 +81,9 @@
                   type="text"
                   id="last"
                   name="last"
+                  minlength="2"
                 />
-                <span class="error">Entrez votre nom</span><br>
-                <span class="errorLength">Le nombre de caractères doit être compris entre 2 et 20</span>
+                <span class= "message" id="lastError">Entrez votre nom</span><br>
               </div>
               <div
                 class="formData">
@@ -95,7 +94,7 @@
                   id="email"
                   name="email"
                 />
-                <span class="error">Entrez un e-mail valide</span><br>
+                <span class= "message" id="emailError">Entrez un e-mail valide</span><br>
               </div>
               <div
                 class="formData">
@@ -107,7 +106,7 @@
                   name="birthdate"
                 />
                 <br>
-                <span class="error">Entrez une date de naissance valide</span>
+                <span class= "message" id="birthdateError">Entrez une date de naissance valide</span>
               </div>
               <div
                 class="formData">
@@ -119,7 +118,7 @@
                   name="quantity" 
                   min="0" 
                   max="99">
-                  <span class="error">Entrez un nombre</span>
+                  <span class= "message" id="quantityError">Entrez un nombre</span>
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div
@@ -191,7 +190,7 @@
                   Portland
                 </label>
                 <br>
-                <span class="error">Choisissez une ville</span>
+                <span class= "message" id="locationError">Choisissez une ville</span>
               </div>
 
               <div
@@ -206,7 +205,7 @@
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
-                <span class="error">Vous devez accepter les conditions d'utilisation</span><br>
+                <span class= "message" id="checkboxError">Vous devez accepter les conditions d'utilisation</span><br>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
@@ -240,9 +239,6 @@
         Copyright 2014 - 2020, GameOn Inc.
       </p>
     </footer>
-    <div valid-container>
-      <span id="validation">Merci ! Votre réservation à été pris en compte</span>
-    </div>  
     <script src="modal.js"></script>
   </body>
 </html>

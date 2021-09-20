@@ -91,8 +91,6 @@ img {
     display: block;
     text-align: left;
   }
-
-  
 }
 
 @media screen and (max-width: 540px) {
@@ -102,8 +100,8 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
+  /* suppr. margin-top: -15px; */
 } 
 
 main {
@@ -229,12 +227,7 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -242,6 +235,7 @@ input[data-error]::after {
   font-size: 12px;
   font-weight: normal;
 }
+
 .checkbox-label .checkbox-icon,
 .checkbox2-label .checkbox-icon {
   display: block;
@@ -537,30 +531,7 @@ footer {
   }
 }
 
-.error, .errorLength {
-  display: none;
-  color: red;
-  font-size: 0.7em;
-}
-
-#validation {
-  position: fixed;
-  top: 50%;
-  right: 0;
-  left: 0;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 2em;
-  background-color: #279e7a;
-  color: white;
-  z-index: 1;
-  display: none;
-  animation: valid-message 3s;
-}
-
+/* classList ajouté dans Js, représente le border des inputs */
 .input {
   border: 2.5px solid red;
 }
@@ -571,10 +542,12 @@ footer {
   justify-content: center;
 }
 
+/* Button fermer après validation du form */
 #close-btn {
   display: none;
 }
 
+/* Message après validation du form */
 #valid-message {
   color: white;
   font-size: 1.8em;
@@ -582,4 +555,11 @@ footer {
   text-align: center;
   margin: 15px;
   margin-bottom: 50px;
+}
+
+/* style des messages d'erreur */
+.message {
+  display: none;
+  color: red;
+  font-size: 0.7em;
 }
